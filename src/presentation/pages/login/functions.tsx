@@ -1,10 +1,14 @@
-import { useNavigation } from '@react-navigation/native';
-import { useState } from 'react';
+
+import { useLocation, useNavigate } from "react-router-dom";
 import { isEmail } from '../../../utils/variables/strings/email.string';
+import { useState } from 'react';
+
 
 export function initFunc() {
-  const navigation = useNavigation<any>();
-  return { navigation };
+  const navigation = useNavigate();
+  const location = useLocation();
+
+  return { navigation, location };
 }
 
 export function formFunc() {

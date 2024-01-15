@@ -9,11 +9,13 @@ function App() {
 
   if (loading) {
     return (
-      <div className='flex flex-col items-center justify-center'>
-        <p className='font-xl text-center font-bold'>
-          Loading App
-        </p>
-      </div>
+      <ThemeProvider defaultTheme='system' storageKey="vite-ui-theme">
+        <div className='flex flex-col items-center justify-center'>
+          <p className='font-xl text-center font-bold'>
+            Loading App
+          </p>
+        </div>
+      </ThemeProvider>
     );
   } else {
     return (

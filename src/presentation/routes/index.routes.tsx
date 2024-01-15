@@ -1,20 +1,21 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { StackAuthTabs } from './auth.routes';
-import { StackHomeTabs } from './home.routes';
+import { BrowserRouter } from 'react-router-dom';
+import { AuthRoutes } from './auth.routes';
+import { UserRoutes } from './user.routes';
+
 
 
 export function AuthNavigation() {
     return (
-        <NavigationContainer>
-            <StackAuthTabs />
-        </NavigationContainer>
+        <BrowserRouter>
+            <AuthRoutes />
+        </BrowserRouter>
     );
 }
 
 export function HomeNavigation() {
     return (
-        <NavigationContainer>
-            <StackHomeTabs />
-        </NavigationContainer>
+        <BrowserRouter>
+            <UserRoutes />
+        </BrowserRouter>
     );
 }

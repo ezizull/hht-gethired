@@ -1,11 +1,10 @@
 export const page = {
-    // auth
-    login: "LOGIN",
+    // main
+    home: "/",
+    login: "/login",
+    notfound: "*",
 
-    // pages
-    home: "HOME",
-    product: "PRODUCT",
-
-    // stacks
-    stack_home_tabs: "STACK_HOME_TABS",
+    // product
+    product: "/product",
+    product_detail: "/product/:id",
 };

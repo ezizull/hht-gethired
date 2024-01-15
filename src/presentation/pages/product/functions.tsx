@@ -1,6 +1,9 @@
-import { useNavigation } from '@react-navigation/native';
+import { useLocation, useNavigate } from "react-router-dom";
+
 
 export function initFunc() {
-  const navigation = useNavigation<any>();
-  return { navigation };
+  const navigation = useNavigate();
+  const location = useLocation();
+
+  return { navigation, location };
 }

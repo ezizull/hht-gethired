@@ -1,14 +1,14 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StackAuthStyles } from './auth.styles';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { page } from './names';
 import LoginPage from '../pages/login';
 
 
-const Stack = createNativeStackNavigator();
-export function StackAuthTabs() {
+export function AuthRoutes() {
     return (
-        <Stack.Navigator initialRouteName={page.login} screenOptions={StackAuthStyles} >
-            <Stack.Screen name={page.login} component={LoginPage} />
-        </Stack.Navigator>
+        <Routes>
+            {/* Auth */}
+            <Route path={page.login} element={<LoginPage />} />
+            <Route path={page.notfound} element={<Navigate to={page.login} />} />
+        </Routes>
     );
 }
