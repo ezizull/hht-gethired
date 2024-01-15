@@ -1,9 +1,9 @@
 import { ConstDefaultResponse } from "../../utils/constants/response.consts";
 
-export interface Response {
+export interface Response<T extends Object[] | Object | null> {
     status: number;
     message: string;
-    data: Object[] | Object | null;
+    data: T;
 }
 
 export interface Paginate {
@@ -17,7 +17,7 @@ export interface Meta {
     limit?: number;
 }
 
-export const DefaultResponse: Response = {
+export const DefaultResponse: Response<null> = {
     status: ConstDefaultResponse.default.code,
     message: ConstDefaultResponse.default.message,
     data: null,

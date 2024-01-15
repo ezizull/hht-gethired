@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "nama": "Nama 1",
+        "sku": "SKU 1",
+        "deskripsi": "Text Editor 1"
+    },
+    {
+        "id": 2,
+        "nama": "Nama 2",
+        "sku": "SKU 2",
+        "deskripsi": "Text Editor 2"
+    },
+    {
+        "id": 3,
+        "nama": "Nama 3",
+        "sku": "SKU 3",
+        "deskripsi": "Text Editor 3"
+    },
+    {
+        "id": 4,
+        "nama": "Nama 4",
+        "sku": "SKU 4",
+        "deskripsi": "Text Editor 4"
+    }
+]
