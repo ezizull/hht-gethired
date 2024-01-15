@@ -1,33 +1,30 @@
-import { useState } from 'react'
-import { Card } from './presentation/components/shadcn/card'
+import { Provider } from 'react-redux';
+import { initFunc } from './App.function';
+import { ThemeProvider } from './presentation/components/shadcn/theme';
+import { AuthNavigation, HomeNavigation } from './presentation/routes/index.routes';
+import { Store } from './infrastructure/reducers';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { user, loading } = initFunc();
 
-  return (
-    <Card className='m-4 p-4'>
-      <div className="flex justify-center space-x-4 mb-4">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="https://cdn.worldvectorlogo.com/logos/vitejs.svg" className="size-10" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" className="size-10" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+  if (loading) {
+    return (
+      <div className='flex flex-col items-center justify-center'>
+        <p className='font-xl text-center font-bold'>
+          Loading App
         </p>
       </div>
-      <p className="">
-        Click on the Vite and React logos to learn more
-      </p>
-    </Card>
-  )
+    );
+  } else {
+    return (
+      <Provider store={Store}>
+        <ThemeProvider defaultTheme='system' storageKey="vite-ui-theme">
+          {user ? <HomeNavigation /> : <AuthNavigation />}
+        </ThemeProvider>
+      </Provider>
+    );
+  }
+
 }
 
 export default App
