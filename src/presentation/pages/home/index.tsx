@@ -6,7 +6,9 @@ import { ConstMessage } from '@/utils/constants/message.consts';
 import { Button } from '@/presentation/components/shadcn/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from '@/presentation/components/shadcn/dropdown-menu';
 import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
-
+import { EditorProvider } from '@tiptap/react';
+import { extensions } from '@/presentation/components/tiptap/extension';
+import TiptapToolbar from '@/presentation/components/tiptap/tolbar';
 
 export default function HomePage() {
   const { navigate } = initFunc();
@@ -62,9 +64,9 @@ export default function HomePage() {
                   }}
                 />
                 {
-                  product.isNameError &&
+                  product.isSkuError &&
                   <span className='text-sm text-red-400'>
-                    {product.nameError}
+                    {product.skuError}
                   </span>
                 }
               </section>
@@ -99,16 +101,40 @@ export default function HomePage() {
                   </DropdownMenuContent>
                 </DropdownMenu>
                 {
-                  product.isNameError &&
+                  product.isBrandError &&
                   <span className='text-sm text-red-400'>
-                    {product.nameError}
+                    {product.brandError}
                   </span>
                 }
               </section>
 
               {/* Editor */}
-              <section className=' space-y-1 mb-8'>
+              <section className='space-y-2 mb-8'>
+                <Label htmlFor='description'>Description</Label>
 
+                <section className='rounded-lg bg-foreground/5 p-4'>
+                  <EditorProvider
+                    autofocus
+                    onUpdate={function (state) {
+                      return setProduct({
+                        ...product,
+                        description: state.editor.getHTML() ?? '',
+                        descriptionError: state.editor.isEmpty ? ConstMessage.description.error : "",
+                        isDescriptionError: state.editor.isEmpty,
+                      })
+                    }}
+                    slotBefore={<TiptapToolbar />}
+                    extensions={extensions}
+                    content={product.description}
+                  >
+                    {
+                      product.isDescriptionError &&
+                      <span className='text-sm text-red-400'>
+                        {product.descriptionError}
+                      </span>
+                    }
+                  </EditorProvider>
+                </section>
               </section>
 
               {/* Submit */}

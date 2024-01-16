@@ -1,0 +1,8 @@
+.tiptap {
+    border-color: inherit;
+    border-width: 1px;
+    height: 2.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    border-radius: calc(var(--radius) - 2px);
+}

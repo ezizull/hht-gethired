@@ -19,7 +19,7 @@ export const ProductForm = {
     isBrandError: false,
     description: '',
     descriptionError: '',
-    isDeskripsiError: false,
+    isDescriptionError: false,
 };
 
 export const DefaultProducts: Array<ProductData> = [
@@ -28,20 +28,20 @@ export const DefaultProducts: Array<ProductData> = [
         name: 'Produk 1',
         sku: 'SKU123',
         brand: 'Brand 1',
-        description: 'Deskripsi produk 1',
+        description: 'Description produk 1',
     },
     {
         id: 2,
         name: 'Produk 2',
         sku: 'SKU456',
         brand: 'Brand 2',
-        description: 'Deskripsi produk 2',
+        description: 'Description produk 2',
     },
     {
         id: 3,
         name: 'Produk 3',
         sku: 'SKU789',
         brand: 'Brand 3',
-        description: 'Deskripsi produk 3',
+        description: 'Description produk 3',
     },
 ];
