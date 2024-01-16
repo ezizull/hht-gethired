@@ -5,11 +5,9 @@ import { thunk } from "redux-thunk";
 import { ProfileData } from "../models/user/profile.model";
 import { Response } from "../models/index.model";
 import { Action } from "../actions";
-import { ProductData } from "../models/product/product.model";
 import storage from "redux-persist/lib/storage";
 import loginReducer from "./auth/login";
 import logoutReducer from "./auth/logout";
-import productReducer from "./product/product";
 
 const presistConfig = {
     key: 'root',
@@ -19,7 +17,6 @@ const presistConfig = {
 const rootReducer = combineReducers({
     loginData: persistReducer<Response<ProfileData>, Action>(presistConfig, loginReducer),
     logoutData: persistReducer<Response<null>, Action>(presistConfig, logoutReducer),
-    productData: persistReducer<Response<ProductData>, Action>(presistConfig, productReducer),
 });
 
 export const Store = createStore(rootReducer, applyMiddleware(thunk));
