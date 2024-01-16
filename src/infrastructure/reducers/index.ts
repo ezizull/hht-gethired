@@ -1,10 +1,15 @@
 import { applyMiddleware, combineReducers, legacy_createStore as createStore } from "redux";
-import { persistReducer, persistStore } from "redux-persist";
+import { TypedUseSelectorHook, useSelector as reduxSelector } from "react-redux";
+import { persistReducer } from "redux-persist";
 import { thunk } from "redux-thunk";
+import { ProfileData } from "../models/user/profile.model";
+import { Response } from "../models/index.model";
+import { Action } from "../actions";
+import { ProductData } from "../models/product/product.model";
 import storage from "redux-persist/lib/storage";
-import login from "./auth/login";
-import logout from "./auth/logout";
-import product from "./product/product";
+import loginReducer from "./auth/login";
+import logoutReducer from "./auth/logout";
+import productReducer from "./product/product";
 
 const presistConfig = {
     key: 'root',
@@ -12,11 +17,12 @@ const presistConfig = {
 };
 
 const rootReducer = combineReducers({
-    login: persistReducer<any, any>(presistConfig, login),
-    logout: persistReducer<any, any>(presistConfig, logout),
-    product: persistReducer<any, any>(presistConfig, product),
+    loginData: persistReducer<Response<ProfileData>, Action>(presistConfig, loginReducer),
+    logoutData: persistReducer<Response<null>, Action>(presistConfig, logoutReducer),
+    productData: persistReducer<Response<ProductData>, Action>(presistConfig, productReducer),
 });
 
 export const Store = createStore(rootReducer, applyMiddleware(thunk));
-export const Persistor = persistStore(Store);
+
 export type RootState = ReturnType<typeof rootReducer>;
+export const useSelector: TypedUseSelectorHook<RootState> = reduxSelector;

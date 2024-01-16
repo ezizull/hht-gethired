@@ -1,18 +1,19 @@
 import { Action } from "../../actions"
-import { getLogoutAction } from "@/infrastructure/actions/auth/login"
-import { DefaultResponse } from "../../models/index.model"
+import { getLoginAction } from "@/infrastructure/actions/auth/login"
+import { DefaultResponse, Response } from "@/infrastructure/models/index.model"
 
-export default (state = DefaultResponse, { type, payload }: Action) => {
+
+export default (state = DefaultResponse, { type, payload }: Action): Response<null> => {
 
     switch (type) {
-        case getLogoutAction.loading.type:
+        case getLoginAction.loading.type:
             return { ...state }
-        case getLogoutAction.success.type:
+        case getLoginAction.success.type:
             return { ...state }
-        case getLogoutAction.failure.type:
+        case getLoginAction.failure.type:
             return { ...state }
         default:
-            return state;
+            return { ...state };
     }
 
 }

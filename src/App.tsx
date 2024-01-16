@@ -1,8 +1,6 @@
-import { Provider } from 'react-redux';
-import { initFunc } from './App.function';
 import { ThemeProvider } from './presentation/components/shadcn/theme';
 import { AuthNavigation, HomeNavigation } from './presentation/routes/index.routes';
-import { Store } from './infrastructure/reducers';
+import { initFunc } from './App.function';
 
 function App() {
   const { user, loading } = initFunc();
@@ -19,11 +17,9 @@ function App() {
     );
   } else {
     return (
-      <Provider store={Store}>
-        <ThemeProvider defaultTheme='system' storageKey="vite-ui-theme">
-          {user ? <HomeNavigation /> : <AuthNavigation />}
-        </ThemeProvider>
-      </Provider>
+      <ThemeProvider defaultTheme='system' storageKey="vite-ui-theme">
+        {user ? <HomeNavigation /> : <AuthNavigation />}
+      </ThemeProvider>
     );
   }
 

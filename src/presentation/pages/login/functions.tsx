@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useState } from 'react';
 import { getLogin } from "@/infrastructure/actions/auth/login";
 import { isPassword } from "@/utils/variables/strings/password.string";
-import { ConstValidation } from "@/utils/constants/validation.consts";
+import { ConstMessage } from "@/utils/constants/message.consts";
 import { FormEvent } from "@/infrastructure/models/app/event";
 
 
@@ -35,9 +35,9 @@ export function loginFunc(dispatch: any) {
     setAuthForm({
       ...authForm,
       isEmailError: !isEmail(authForm.email),
-      emailError: !isEmail(authForm.email) ? ConstValidation.email.error : "",
+      emailError: !isEmail(authForm.email) ? ConstMessage.email.error : "",
       isPasswordError: !isPassword(authForm.password),
-      passwordError: !isPassword(authForm.password) ? ConstValidation.email.error : "",
+      passwordError: !isPassword(authForm.password) ? ConstMessage.password.error : "",
     });
 
     if (!authForm.isEmailError || !authForm.isPasswordError) {

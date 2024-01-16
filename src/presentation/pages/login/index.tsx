@@ -4,8 +4,7 @@ import { Label } from '@/presentation/components/shadcn/label';
 import { Input } from '@/presentation/components/shadcn/input';
 import { Button } from '@/presentation/components/shadcn/button';
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
-import { Form } from 'react-router-dom';
-import { ConstValidation } from '@/utils/constants/validation.consts';
+import { ConstMessage } from '@/utils/constants/message.consts';
 import { isEmail } from '@/utils/variables/strings/email.string';
 import { isPassword } from '@/utils/variables/strings/password.string';
 
@@ -32,7 +31,7 @@ export default function LoginPage() {
                   ...authForm,
                   email: event.target.value,
                   isEmailError: !isEmail(event.target.value),
-                  emailError: !isEmail(event.target.value) ? ConstValidation.email.error : "",
+                  emailError: !isEmail(event.target.value) ? ConstMessage.email.error : "",
                 });
               }}
             />
@@ -58,7 +57,7 @@ export default function LoginPage() {
                     ...authForm,
                     password: event.target.value,
                     isPasswordError: !isPassword(event.target.value),
-                    passwordError: !isPassword(event.target.value) ? ConstValidation.password.error : "",
+                    passwordError: !isPassword(event.target.value) ? ConstMessage.password.error : "",
                   });
                 }}
               />

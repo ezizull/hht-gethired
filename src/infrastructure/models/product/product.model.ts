@@ -1,3 +1,6 @@
+import { ConstDefaultResponse } from "@/utils/constants/response.consts";
+import { Response } from "../index.model";
+
 export interface ProductData {
     id: number;
     nama: string;
@@ -11,9 +14,13 @@ export interface ProductBody {
     deskripsi: string;
 }
 
-export const DefaultProduct: ProductData = {
-    id: 0,
-    nama: '',
-    sku: '',
-    deskripsi: '',
+export const DefaultProduct: Response<ProductData> = {
+    status: ConstDefaultResponse.default.code,
+    message: ConstDefaultResponse.default.message,
+    data: {
+        id: 0,
+        nama: '',
+        sku: '',
+        deskripsi: '',
+    },
 };

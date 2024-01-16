@@ -12,12 +12,12 @@ export function RequestAction<T extends Object[] | Object | null>(action: string
 
   interface SuccessAction extends Action {
     readonly type: typeof success;
-    readonly payload: Response<T>;
+    readonly payload: T;
   }
 
   interface FailureAction extends Action {
     readonly type: typeof failure;
-    readonly payload: Response<null>;
+    readonly payload: null;
   }
 
   type RequestWrapper = {
@@ -27,12 +27,12 @@ export function RequestAction<T extends Object[] | Object | null>(action: string
 
   type SuccessWrapper = {
     readonly type: typeof success;
-    readonly action: (response: Response<T>) => SuccessAction;
+    readonly action: (response: T) => SuccessAction;
   };
 
   type FailureWrapper = {
     readonly type: typeof loading;
-    readonly action: (response: Response<null>) => FailureAction;
+    readonly action: (response: null) => FailureAction;
   };
 
   type ActionWrappers = {
@@ -50,14 +50,14 @@ export function RequestAction<T extends Object[] | Object | null>(action: string
     },
     success: {
       type: success,
-      action: (response: Response<T>): SuccessAction => ({
+      action: (response: T): SuccessAction => ({
         type: success,
         payload: response,
       }),
     },
     failure: {
       type: failure,
-      action: (response: Response<null>): FailureAction => ({
+      action: (response: null): FailureAction => ({
         type: failure,
         payload: response,
       }),

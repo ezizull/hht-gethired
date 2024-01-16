@@ -1,19 +1,17 @@
+import { ConstDefaultResponse } from "@/utils/constants/response.consts";
+import { Response } from "../index.model";
+
 export interface ProfileData {
     email: string;
-    first_name: string;
-    last_name: string;
-    profile_image: string;
+    name: string;
 }
 
-export interface ProfileState {
-    status: number;
-    message: string;
-    data: ProfileData;
-}
 
-export const DefaultProfile: ProfileData = {
-    email: '',
-    first_name: '',
-    last_name: '',
-    profile_image: '',
+export const DefaultProfile: Response<ProfileData> = {
+    status: ConstDefaultResponse.default.code,
+    message: ConstDefaultResponse.default.message,
+    data: {
+        email: '',
+        name: '',
+    },
 };

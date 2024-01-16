@@ -1,6 +1,11 @@
+import { DefaultProfile, ProfileData } from "./infrastructure/models/user/profile.model";
 import { useEffect, useState } from "react";
-import { DefaultProfile } from "./infrastructure/models/user/profile.model";
+import { ConstMessage } from "./utils/constants/message.consts";
+import { useSelector } from "./infrastructure/reducers";
+import { Response } from "./infrastructure/models/index.model";
 import secureLocalStorage from "react-secure-storage";
+import { Navigate, redirect } from "react-router-dom";
+import { page } from "./presentation/routes/names";
 
 
 export function initFunc() {
@@ -10,19 +15,23 @@ export function initFunc() {
   const getLocalUser = async () => {
     try {
       setLoading(true);
-      const userJSON = await secureLocalStorage.getItem("@user");
-      const userData = userJSON ? JSON.parse(`${userJSON}`) : null;
-      setUser(userData);
+      const userData = await secureLocalStorage.getItem("user");
+      setUser(userData as Response<ProfileData>);
     } catch (e) {
-      console.log(e, "Error getting local user");
+      console.log(e, ConstMessage.local.error);
     } finally {
       setLoading(false);
     }
   };
 
+  const auth = useSelector(({ loginData }) => loginData);
   useEffect(() => {
     getLocalUser();
-  }, []);
+    if (auth.data != null) {
+      setUser(auth);
+      redirect(page.home);
+    }
+  }, [auth,]);
 
   return { user, loading };
 }

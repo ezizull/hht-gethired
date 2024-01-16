@@ -12,18 +12,8 @@ export interface Paginate<T extends Object[] | Object | null> {
     data: T;
 }
 
-export interface Meta {
-    offset: number;
-    limit?: number;
-}
-
 export const DefaultResponse: Response<null> = {
     status: ConstDefaultResponse.default.code,
     message: ConstDefaultResponse.default.message,
     data: null,
 };
-
-export const DefaultMeta: Meta = {
-    offset: 0,
-    limit: 3,
-}

@@ -1,5 +1,8 @@
-export const ConstValidation = {
+export const ConstMessage = {
   // auth
+  local: {
+    error: "error getting local data"
+  },
   email: {
     error: "email is not valid",
     valid: "email is valid",
