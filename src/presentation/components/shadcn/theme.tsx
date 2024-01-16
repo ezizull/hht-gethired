@@ -1,4 +1,4 @@
-import { DefaultTheme, Theme, ThemeProviderProps, ThemeProviderState } from "@/infrastructure/models/theme/theme"
+import { DefaultTheme, Theme, ThemeProviderProps, ThemeProviderState } from "@/infrastructure/models/app/theme"
 import { createContext, useContext, useEffect, useState } from "react"
 
 const ThemeProviderContext = createContext<ThemeProviderState>(DefaultTheme)
