@@ -17,7 +17,7 @@ export default function TiptapToolbar() {
             .toggleBold()
             .run()
         }
-        className={editor.isActive('bold') ? 'is-active' : ''}
+        className={editor.isActive('bold') ? 'bg-foreground/5' : ''}
       >
         bold
       </Button>
@@ -31,7 +31,7 @@ export default function TiptapToolbar() {
             .toggleItalic()
             .run()
         }
-        className={editor.isActive('italic') ? 'is-active' : ''}
+        className={editor.isActive('italic') ? 'bg-foreground/5' : ''}
       >
         italic
       </Button>
@@ -45,7 +45,7 @@ export default function TiptapToolbar() {
             .toggleStrike()
             .run()
         }
-        className={editor.isActive('strike') ? 'is-active' : ''}
+        className={editor.isActive('strike') ? 'bg-foreground/5' : ''}
       >
         strike
       </Button>
