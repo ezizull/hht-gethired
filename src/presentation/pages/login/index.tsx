@@ -1,8 +1,9 @@
-import { formFunc, initFunc } from './functions';
+import { loginFunc, initFunc } from './functions';
 
 
 export default function LoginPage() {
-  const { navigation } = initFunc();
+  const { navigation, dispatch } = initFunc();
+  loginFunc(dispatch);
 
   return (
     <div className='flex flex-col items-center justify-center'>

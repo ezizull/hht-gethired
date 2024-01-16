@@ -1,6 +1,6 @@
 import { Action as ReduxAction } from "redux";
 import { ThunkAction } from "redux-thunk";
-import { RootState } from "../../../../../../react-native/nutech/gethired/src/infrastructure/reducers";
+import { RootState } from "../reducers";
 
 declare interface Action<T = any> {
     readonly type: string;

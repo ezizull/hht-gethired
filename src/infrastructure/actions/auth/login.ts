@@ -3,21 +3,35 @@ import { RequestAction } from "@/utils/infrastructure/actions/request.actions";
 import { ProfileData } from "@/infrastructure/models/user/profile.model";
 import { AsyncAction, Dispatch } from "..";
 import * as fs from 'fs';
+import { LoginBody } from "@/infrastructure/models/auth/login.model";
 
 
-export const loginActions = RequestAction<ProfileData>(ConstRequest.login.data);
-export function getLogin(): AsyncAction {
+export const getLoginAction = RequestAction<ProfileData>(ConstRequest.login.data);
+export function getLogin(form: LoginBody): AsyncAction {
   return async function (dispatch: Dispatch) {
     try {
-      dispatch(loginActions.loading);
+      dispatch(getLoginAction.loading);
 
       const responJSON = fs.readFileSync("login.json");
       console.log(responJSON);
       // const response = JSON.parse(responJSON);
 
-      // dispatch(loginActions.success.action());
+      // dispatch(getLoginAction.success.action());
     } catch (error: any) {
-      dispatch(loginActions.failure.action(error));
+      dispatch(getLoginAction.failure.action(error));
+    }
+  }
+}
+
+export const getLogoutAction = RequestAction<ProfileData>(ConstRequest.logout.post);
+export function getLogout(form: LoginBody): AsyncAction {
+  return async function (dispatch: Dispatch) {
+    try {
+      dispatch(getLogoutAction.loading);
+
+      // dispatch(getLogoutAction.success.action());
+    } catch (error: any) {
+      dispatch(getLogoutAction.failure.action(error));
     }
   }
 }

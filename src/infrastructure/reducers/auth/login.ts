@@ -1,15 +1,15 @@
-import { ConstRequest } from "../../../utils/constants/request.consts"
 import { Action } from "../../actions"
+import { getLoginAction } from "@/infrastructure/actions/auth/login"
 import { DefaultResponse } from "../../models/index.model"
 
 export default (state = DefaultResponse, { type, payload }: Action) => {
 
     switch (type) {
-        case ConstRequest.login.data.loading:
+        case getLoginAction.loading.type:
             return { ...state }
-        case ConstRequest.login.data.success:
+        case getLoginAction.success.type:
             return { ...state }
-        case ConstRequest.login.data.failure:
+        case getLoginAction.failure.type:
             return { ...state }
         default:
             return state;

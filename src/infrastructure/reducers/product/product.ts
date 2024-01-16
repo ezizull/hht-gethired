@@ -1,15 +1,15 @@
+import { getProductActions } from "@/infrastructure/actions/product/product"
 import { Action } from "../../actions"
-import { getLogoutAction } from "@/infrastructure/actions/auth/login"
 import { DefaultResponse } from "../../models/index.model"
 
 export default (state = DefaultResponse, { type, payload }: Action) => {
 
     switch (type) {
-        case getLogoutAction.loading.type:
+        case getProductActions.loading.type:
             return { ...state }
-        case getLogoutAction.success.type:
+        case getProductActions.success.type:
             return { ...state }
-        case getLogoutAction.failure.type:
+        case getProductActions.failure.type:
             return { ...state }
         default:
             return state;

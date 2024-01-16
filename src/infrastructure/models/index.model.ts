@@ -6,10 +6,10 @@ export interface Response<T extends Object[] | Object | null> {
     data: T;
 }
 
-export interface Paginate {
+export interface Paginate<T extends Object[] | Object | null> {
     offset: number;
     limit: number;
-    data: Object[] | Object | null;
+    data: T;
 }
 
 export interface Meta {
