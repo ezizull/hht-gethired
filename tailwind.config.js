@@ -22,6 +22,8 @@ module.exports = {
         'crimson': ['Crimson Text', 'serif']
       },
       screens: {
+        '5xs': '150px',
+        '4xs': '200px',
         '3xs': '250px',
         '2xs': '400px',
         'xs': '550px',

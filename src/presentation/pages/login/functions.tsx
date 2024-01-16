@@ -7,6 +7,7 @@ import { getLogin } from "@/infrastructure/actions/auth/login";
 import { isPassword } from "@/utils/variables/strings/password.string";
 import { ConstMessage } from "@/utils/constants/message.consts";
 import { FormEvent } from "@/infrastructure/models/app/event";
+import { AuthForm } from "@/infrastructure/models/auth/login.model";
 
 
 export function initFunc() {
@@ -18,17 +19,7 @@ export function initFunc() {
 }
 
 export function loginFunc(dispatch: any) {
-  const defAuthForm = {
-    email: "",
-    isEmailError: false,
-    emailError: "",
-    password: "",
-    passwordError: "",
-    showPassword: false,
-    isPasswordError: false,
-  };
-
-  const [authForm, setAuthForm] = useState(defAuthForm);
+  const [authForm, setAuthForm] = useState(AuthForm);
   function submitForm(event?: FormEvent) {
     event?.preventDefault();
 

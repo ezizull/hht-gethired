@@ -1,35 +1,47 @@
 export interface ProductData {
     id: number;
-    nama: string;
+    name: string;
     sku: string;
-    deskripsi: string;
+    brand: 'Brand 1' | 'Brand 2' | 'Brand 3' | '';
+    description: string;
 }
 
-
-export const DefaultProduct: ProductData = {
+export const ProductForm = {
     id: 0,
-    nama: '',
+    name: '',
+    nameError: '',
+    isNameError: false,
     sku: '',
-    deskripsi: '',
+    skuError: '',
+    isSkuError: false,
+    brand: '',
+    brandError: '',
+    isBrandError: false,
+    description: '',
+    descriptionError: '',
+    isDeskripsiError: false,
 };
 
 export const DefaultProducts: Array<ProductData> = [
     {
         id: 1,
-        nama: 'Produk 1',
+        name: 'Produk 1',
         sku: 'SKU123',
-        deskripsi: 'Deskripsi produk 1',
+        brand: 'Brand 1',
+        description: 'Deskripsi produk 1',
     },
     {
         id: 2,
-        nama: 'Produk 2',
+        name: 'Produk 2',
         sku: 'SKU456',
-        deskripsi: 'Deskripsi produk 2',
+        brand: 'Brand 2',
+        description: 'Deskripsi produk 2',
     },
     {
         id: 3,
-        nama: 'Produk 3',
+        name: 'Produk 3',
         sku: 'SKU789',
-        deskripsi: 'Deskripsi produk 3',
+        brand: 'Brand 3',
+        description: 'Deskripsi produk 3',
     },
 ];
