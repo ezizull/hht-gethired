@@ -123,6 +123,9 @@ export default function FormWidget() {
               extensions={extensions}
               content={product.description}
             >
+
+              <div className="w-full h-0.5 bg-foreground/5"></div>
+
               {
                 product.isDescriptionError &&
                 <span className='text-sm text-red-400'>

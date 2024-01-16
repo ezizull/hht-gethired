@@ -14,7 +14,7 @@ export function initFunc() {
   const getLocalUser = async () => {
     try {
       setLoading(true);
-      const userData = await secureLocalStorage.getItem("user");
+      const userData = secureLocalStorage.getItem("user");
       setUser(userData as Response<ProfileData>);
     } catch (e) {
       console.log(e, ConstMessage.local.error);
