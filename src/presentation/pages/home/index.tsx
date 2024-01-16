@@ -34,6 +34,11 @@ export default function HomePage() {
                     if (index % 2 !== 0) {
                       return (
                         <Card key={index} className='flex flex-col relative w-full p-6 py-8 font-lato space-y-6'>
+                          {/* Menage */}
+                          <section className='flex flex-col absolute top-0 right-0 space-y-2'>
+
+                          </section>
+
                           {/* Name */}
                           <section className='flex flex-col space-y-1'>
                             <Label className='font-black' htmlFor='name'>Name</Label>
