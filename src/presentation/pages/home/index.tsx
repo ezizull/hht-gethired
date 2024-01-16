@@ -25,7 +25,7 @@ export default function HomePage() {
       {
         // Products
         products && (
-          <ScrollArea className='w-[49rem] h-[46rem] max-h-[46rem]'>
+          <ScrollArea className='w-full sm:w-96 md:w-[49rem] h-[46rem] max-h-[46rem]'>
             <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
               {/* Odd */}
               <section className='grid auto-rows-min gap-4'>
