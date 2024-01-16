@@ -4,8 +4,7 @@ import { ConstMessage } from "./utils/constants/message.consts";
 import { useSelector } from "./infrastructure/reducers";
 import { Response } from "./infrastructure/models/index.model";
 import secureLocalStorage from "react-secure-storage";
-import { Navigate, redirect } from "react-router-dom";
-import { page } from "./presentation/routes/names";
+
 
 
 export function initFunc() {
@@ -27,10 +26,7 @@ export function initFunc() {
   const auth = useSelector(({ loginData }) => loginData);
   useEffect(() => {
     getLocalUser();
-    if (auth.data != null) {
-      setUser(auth);
-      redirect(page.home);
-    }
+    if (auth.data) setUser(auth);
   }, [auth,]);
 
   return { user, loading };

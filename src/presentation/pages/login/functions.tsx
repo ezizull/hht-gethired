@@ -10,11 +10,11 @@ import { FormEvent } from "@/infrastructure/models/app/event";
 
 
 export function initFunc() {
-  const navigation = useNavigate();
+  const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
 
-  return { navigation, location, dispatch };
+  return { navigate, location, dispatch };
 }
 
 export function loginFunc(dispatch: any) {

@@ -2,7 +2,7 @@ import { initFunc } from './functions';
 
 
 export default function ProductPage() {
-  const { navigation } = initFunc();
+  const { navigate } = initFunc();
 
   return (
     <div className='flex flex-col items-center justify-center h-screen'>
