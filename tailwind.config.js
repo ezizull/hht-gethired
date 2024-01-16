@@ -17,6 +17,24 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        'lato': ['Lato', 'sans-serif'],
+        'crimson': ['Crimson Text', 'serif']
+      },
+      screens: {
+        '3xs': '250px',
+        '2xs': '400px',
+        'xs': '550px',
+        'sm': '700px',
+        'md': '850px',
+        'lg': '1000px',
+        'sl': '1150px',
+        'xl': '1300px',
+        '2xl': '1450px',
+        '2.5xl': '1600px',
+        '3xl': '1850px',
+        '4xl': '2000px',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

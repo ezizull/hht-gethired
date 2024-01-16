@@ -19,6 +19,7 @@ export function loginFunc(dispatch: any) {
     email: "",
     isEmailError: false,
     password: "",
+    showPassword: false,
     isPasswordError: false,
   };
 
