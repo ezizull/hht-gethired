@@ -6,7 +6,7 @@ export default function TiptapToolbar() {
   if (!editor) return null;
 
   return (
-    <section className='grid grid-cols-3 gap-4 w-full !mb-4'>
+    <section className='grid grid-cols-1 2xs:grid-cols-3 gap-4 w-full !mb-4'>
       <Button
         variant={'outline'}
         onClick={() => editor.chain().focus().toggleBold().run()}

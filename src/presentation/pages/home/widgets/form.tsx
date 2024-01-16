@@ -78,7 +78,7 @@ export default function FormWidget() {
             </DropdownMenuTrigger>
             <DropdownMenuContent className='w-[21rem]'>
               {
-                Object.values(['Brand 1', 'Brand 2', 'Brand 3']).map((brandOption) => (
+                ['Brand 1', 'Brand 2', 'Brand 3'].map((brandOption) => (
                   <DropdownMenuItem
                     key={brandOption}
                     onClick={function (event) {
