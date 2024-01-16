@@ -76,7 +76,7 @@ export default function FormWidget() {
                 {product.brand ? product.brand : 'choose brand'}
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className='5xs:w-[7rem] 4xs:w-[9rem] 3xs:w-[11rem] 2xs:w-[21rem]'>
+            <DropdownMenuContent className='w-[21rem]'>
               {
                 Object.values(['Brand 1', 'Brand 2', 'Brand 3']).map((brandOption) => (
                   <DropdownMenuItem

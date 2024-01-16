@@ -6,12 +6,14 @@ export interface ProfileData {
     name: string;
 }
 
+export interface ProfileState {
+    status: number;
+    message: string;
+    data: ProfileData | undefined
+}
 
-export const DefaultProfile: Response<ProfileData> = {
+export const DefaultProfile: ProfileState = {
     status: ConstDefaultResponse.default.code,
     message: ConstDefaultResponse.default.message,
-    data: {
-        email: '',
-        name: '',
-    },
+    data: undefined,
 };

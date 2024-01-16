@@ -7,6 +7,7 @@ export interface ProductData {
 }
 
 export const ProductForm = {
+    method: 'create',
     id: 0,
     name: '',
     nameError: '',

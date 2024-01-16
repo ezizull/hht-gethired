@@ -1,9 +1,8 @@
 import { getLoginAction } from "@/infrastructure/actions/auth/login";
-import { DefaultProfile, ProfileData } from "@/infrastructure/models/user/profile.model";
-import { Response } from "@/infrastructure/models/index.model";
+import { DefaultProfile, ProfileState } from "@/infrastructure/models/user/profile.model";
 import { Action } from "../../actions";
 
-export default (state = DefaultProfile, { type, payload }: Action): Response<ProfileData> => {
+export default (state = DefaultProfile, { type, payload }: Action): ProfileState => {
 
     switch (type) {
         case getLoginAction.loading.type:

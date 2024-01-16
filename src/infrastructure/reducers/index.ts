@@ -2,7 +2,7 @@ import { applyMiddleware, combineReducers, legacy_createStore as createStore } f
 import { TypedUseSelectorHook, useSelector as reduxSelector } from "react-redux";
 import { persistReducer } from "redux-persist";
 import { thunk } from "redux-thunk";
-import { ProfileData } from "../models/user/profile.model";
+import { ProfileData, ProfileState } from "../models/user/profile.model";
 import { Response } from "../models/index.model";
 import { Action } from "../actions";
 import storage from "redux-persist/lib/storage";
@@ -15,8 +15,8 @@ const presistConfig = {
 };
 
 const rootReducer = combineReducers({
-    loginData: persistReducer<Response<ProfileData>, Action>(presistConfig, loginReducer),
-    logoutData: persistReducer<Response<null>, Action>(presistConfig, logoutReducer),
+    loginData: persistReducer<ProfileState, Action>(presistConfig, loginReducer),
+    logoutData: persistReducer<ProfileState, Action>(presistConfig, logoutReducer),
 });
 
 export const Store = createStore(rootReducer, applyMiddleware(thunk));
