@@ -10,9 +10,10 @@ import { ProductData } from "@/infrastructure/models/product/product.model";
 interface Props {
   products: ProductData[],
   deleteProduct: (selected: ProductData) => void,
+  updateProduct: (selected: ProductData) => void,
 }
 
-export default function ProductWidget({ products, deleteProduct }: Props) {
+export default function ProductWidget({ products, deleteProduct, updateProduct }: Props) {
 
   return (
     products.length > 0 && (
@@ -31,8 +32,8 @@ export default function ProductWidget({ products, deleteProduct }: Props) {
                           type="button"
                           size="sm"
                           variant="secondary"
-                          onClick={() => { }}
-                          className="bg-blue-500 size-8 p-2">
+                          onClick={() => updateProduct(data)}
+                          className="bg-blue-400 size-8 p-2">
                           <Pencil
                             className="size-full"
                             aria-hidden="true"
@@ -42,7 +43,7 @@ export default function ProductWidget({ products, deleteProduct }: Props) {
                           type="button"
                           size="sm"
                           onClick={() => deleteProduct(data)}
-                          className="bg-red-500 size-8 p-2">
+                          className="bg-red-400 size-8 p-2">
                           <Trash2
                             className="size-full"
                             aria-hidden="true"
@@ -99,8 +100,8 @@ export default function ProductWidget({ products, deleteProduct }: Props) {
                           type="button"
                           size="sm"
                           variant="secondary"
-                          onClick={() => { }}
-                          className="bg-blue-500 size-8 p-2">
+                          onClick={() => updateProduct(data)}
+                          className="bg-blue-400 size-8 p-2">
                           <Pencil
                             className="size-full"
                             aria-hidden="true"
@@ -110,7 +111,7 @@ export default function ProductWidget({ products, deleteProduct }: Props) {
                           type="button"
                           size="sm"
                           onClick={() => deleteProduct(data)}
-                          className="bg-red-500 size-8 p-2">
+                          className="bg-red-400 size-8 p-2">
                           <Trash2
                             className="size-full"
                             aria-hidden="true"

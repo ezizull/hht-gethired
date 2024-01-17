@@ -81,7 +81,7 @@ export default function FormWidget({ product, setProduct, createProduct }: Props
             <Label htmlFor='brand'>Brand</Label>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button className='w-full' variant="secondary">
+                <Button className='w-full bg-purple-400' variant="default">
                   {product.brand ? product.brand : 'choose brand'}
                 </Button>
               </DropdownMenuTrigger>
@@ -133,7 +133,6 @@ export default function FormWidget({ product, setProduct, createProduct }: Props
                 extensions={extensions}
                 content={product.description ? product.description : ''}
               >
-
                 <div className="w-full h-0.5 bg-foreground/5"></div>
 
                 {
@@ -147,13 +146,35 @@ export default function FormWidget({ product, setProduct, createProduct }: Props
           </section>
 
           {/* Submit */}
-          <Button
-            type="submit"
-            className='w-full'
-            size="sm"
-            onClick={() => createProduct()}>
-            Create
-          </Button>
+          {
+            product.method === 'create' ?
+              <Button
+                type="submit"
+                className='w-full'
+                size="sm"
+                onClick={() => createProduct()}>
+                Create
+              </Button>
+              :
+              <div className='flex flex-col'>
+                <Button
+                  type="submit"
+                  className='w-full mb-4'
+                  size="sm"
+                  onClick={() => createProduct()}>
+                  Update
+                </Button>
+
+                <Button
+                  type="button"
+                  variant="secondary"
+                  className='bg-blue-400/5 w-full mb-4'
+                  size="sm"
+                  onClick={() => setProduct(ProductForm)}>
+                  Cancel
+                </Button>
+              </div>
+          }
         </form>
       </Card>
     </ScrollArea>

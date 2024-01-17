@@ -4,9 +4,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FormEvent } from "@/infrastructure/models/app/event";
 import { ProfileData } from "@/infrastructure/models/user/profile.model";
-import secureLocalStorage from "react-secure-storage";
 import { ConstMessage } from "@/utils/constants/message.consts";
 import { useDispatch } from "react-redux";
+import secureLocalStorage from "react-secure-storage";
+
 
 export function initFunc() {
   const navigate = useNavigate();
@@ -19,8 +20,8 @@ export function initFunc() {
 }
 
 export function productFunc() {
-  const [product, setProduct] = useState(ProductForm);
   const [products, setProducts] = useState(DefaultProducts);
+  const [product, setProduct] = useState(ProductForm);
 
   function createProduct(event?: FormEvent) {
     event?.preventDefault();
@@ -34,8 +35,8 @@ export function productFunc() {
 
     setProduct({
       ...product,
-      method: 'create',
       ...errors,
+      method: 'create',
       isNameError: errors.nameError.length > 0,
       isSkuError: errors.skuError.length > 0,
       isBrandError: errors.brandError.length > 0,
@@ -60,7 +61,18 @@ export function productFunc() {
   }
 
   function updateProduct(selected: ProductData) {
-
+    const editProduct = products.find(product => product.id === selected.id);
+    if (editProduct) {
+      setProduct({
+        ...ProductForm,
+        method: 'update',
+        id: selected.id,
+        name: selected.name,
+        sku: selected.sku,
+        brand: selected.brand,
+        description: selected.description,
+      });
+    }
   }
 
   function deleteProduct(selected: ProductData) {

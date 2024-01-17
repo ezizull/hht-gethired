@@ -7,7 +7,7 @@ export interface ProductData {
 }
 
 export interface ProductForm {
-    method: string;
+    method: 'create' | 'update';
     id: number;
     name: string;
     nameError: string;
