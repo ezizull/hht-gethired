@@ -8,12 +8,17 @@ import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
 import { EditorProvider } from '@tiptap/react';
 import { extensions } from '@/presentation/components/tiptap/extension';
 import TiptapToolbar from '@/presentation/components/tiptap/tolbar';
-import { productFunc } from '../functions';
 import { ScrollArea } from '@/presentation/components/shadcn/scroll-area';
+import { ProductForm } from '@/infrastructure/models/product/product.model';
+import { FormEvent } from '@/infrastructure/models/app/event';
 
-export default function FormWidget() {
-  const { product, setProduct, createProduct } = productFunc();
+interface Props {
+  product: ProductForm,
+  setProduct: React.Dispatch<React.SetStateAction<ProductForm>>,
+  createProduct: (event?: FormEvent | undefined) => void
+}
 
+export default function FormWidget({ product, setProduct, createProduct }: Props) {
   return (
     <ScrollArea className='h-[37rem]'>
       <Card className='2xs:w-96 p-6 py-8 font-lato'>

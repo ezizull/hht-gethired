@@ -6,7 +6,24 @@ export interface ProductData {
     description: string;
 }
 
-export const ProductForm = {
+export interface ProductForm {
+    method: string;
+    id: number;
+    name: string;
+    nameError: string;
+    isNameError: boolean;
+    sku: string;
+    skuError: string;
+    isSkuError: boolean;
+    brand: string;
+    brandError: string;
+    isBrandError: boolean;
+    description: string;
+    descriptionError: string;
+    isDescriptionError: boolean;
+};
+
+export const ProductForm: ProductForm = {
     method: 'create',
     id: 0,
     name: '',

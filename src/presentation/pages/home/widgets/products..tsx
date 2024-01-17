@@ -5,11 +5,14 @@ import { EditorProvider } from '@tiptap/react';
 import { extensions } from '@/presentation/components/tiptap/extension';
 import { Button } from '@/presentation/components/shadcn/button';
 import { Pencil, Trash2 } from 'lucide-react';
-import { productFunc } from '../functions';
+import { ProductData } from "@/infrastructure/models/product/product.model";
 
+interface Props {
+  products: ProductData[],
+  deleteProduct: (selected: ProductData) => void,
+}
 
-export default function ProductWidget() {
-  const { products, deleteProduct } = productFunc();
+export default function ProductWidget({ products, deleteProduct }: Props) {
 
   return (
     products.length > 0 && (

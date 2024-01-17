@@ -5,9 +5,8 @@ import { useState } from "react";
 import { FormEvent } from "@/infrastructure/models/app/event";
 import { ProfileData } from "@/infrastructure/models/user/profile.model";
 import secureLocalStorage from "react-secure-storage";
-import { useDispatch } from "react-redux";
-import { getLogout } from "@/infrastructure/actions/auth/logout";
 import { ConstMessage } from "@/utils/constants/message.consts";
+import { useDispatch } from "react-redux";
 
 export function initFunc() {
   const navigate = useNavigate();
@@ -26,18 +25,43 @@ export function productFunc() {
   function createProduct(event?: FormEvent) {
     event?.preventDefault();
 
+    const errors = {
+      nameError: product.name.length < 1 ? ConstMessage.name.error : '',
+      skuError: product.sku.length < 1 ? ConstMessage.sku.error : '',
+      brandError: product.brand.length < 1 ? ConstMessage.brand.error : '',
+      descriptionError: product.description.length < 1 ? ConstMessage.description.error : '',
+    };
+
     setProduct({
       ...product,
       method: 'create',
-      nameError: product.name.length < 1 ? ConstMessage.name.error : '',
-      isNameError: product.name.length < 1,
-      skuError: product.sku.length < 1 ? ConstMessage.sku.error : '',
-      isSkuError: product.sku.length < 1,
-      brandError: product.brand.length < 1 ? ConstMessage.brand.error : '',
-      isBrandError: product.brand.length < 1,
-      descriptionError: product.description.length < 1 ? ConstMessage.description.error : '',
-      isDescriptionError: product.description.length < 1,
-    })
+      ...errors,
+      isNameError: errors.nameError.length > 0,
+      isSkuError: errors.skuError.length > 0,
+      isBrandError: errors.brandError.length > 0,
+      isDescriptionError: errors.descriptionError.length > 0,
+    });
+
+    if (
+      !errors.nameError &&
+      !errors.skuError &&
+      !errors.brandError &&
+      !errors.descriptionError
+    ) {
+      setProducts([...products, {
+        id: products.length,
+        name: product.name,
+        brand: product.brand as 'Brand 1' | 'Brand 2' | 'Brand 3' | '',
+        sku: product.sku,
+        description: product.description,
+      }]);
+
+      console.log(products)
+    }
+  }
+
+  function updateProduct(selected: ProductData) {
+
   }
 
   function deleteProduct(selected: ProductData) {
@@ -45,5 +69,5 @@ export function productFunc() {
     setProducts(newProducts);
   }
 
-  return { product, setProduct, createProduct, deleteProduct, products }
+  return { product, setProduct, createProduct, deleteProduct, updateProduct, products }
 }
