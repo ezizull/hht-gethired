@@ -9,7 +9,7 @@ import { productFunc } from '../functions';
 
 
 export default function ProductWidget() {
-  const { products } = productFunc();
+  const { products, deleteProduct } = productFunc();
 
   return (
     products.length > 0 && (
@@ -19,7 +19,7 @@ export default function ProductWidget() {
           <section className='grid auto-rows-min gap-4'>
             {
               products.map(function (data, index) {
-                if (index % 2 !== 0) {
+                if (index % 2 === 0) {
                   return (
                     <Card key={index} className='flex flex-col relative w-full p-6 py-8 font-lato'>
                       {/* Menage */}
@@ -38,7 +38,7 @@ export default function ProductWidget() {
                         <Button
                           type="button"
                           size="sm"
-                          onClick={() => { }}
+                          onClick={() => deleteProduct(data)}
                           className="bg-red-500 size-8 p-2">
                           <Trash2
                             className="size-full"
@@ -87,7 +87,7 @@ export default function ProductWidget() {
           <section className='grid auto-rows-min gap-4'>
             {
               products.map(function (data, index) {
-                if (index % 2 === 0) {
+                if (index % 2 !== 0) {
                   return (
                     <Card key={index} className='flex flex-col relative w-full p-6 py-8 font-lato'>
                       {/* Menage */}
@@ -106,7 +106,7 @@ export default function ProductWidget() {
                         <Button
                           type="button"
                           size="sm"
-                          onClick={() => { }}
+                          onClick={() => deleteProduct(data)}
                           className="bg-red-500 size-8 p-2">
                           <Trash2
                             className="size-full"

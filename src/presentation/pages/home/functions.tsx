@@ -1,5 +1,5 @@
 
-import { ProductForm, DefaultProducts } from "@/infrastructure/models/product/product.model";
+import { ProductForm, DefaultProducts, ProductData } from "@/infrastructure/models/product/product.model";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FormEvent } from "@/infrastructure/models/app/event";
@@ -40,5 +40,10 @@ export function productFunc() {
     })
   }
 
-  return { product, setProduct, createProduct, products }
+  function deleteProduct(selected: ProductData) {
+    const newProducts = products.filter(product => product.id !== selected.id);
+    setProducts(newProducts);
+  }
+
+  return { product, setProduct, createProduct, deleteProduct, products }
 }
