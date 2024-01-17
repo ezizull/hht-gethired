@@ -7,6 +7,7 @@ import { ProfileData } from "@/infrastructure/models/user/profile.model";
 import secureLocalStorage from "react-secure-storage";
 import { useDispatch } from "react-redux";
 import { getLogout } from "@/infrastructure/actions/auth/logout";
+import { ConstMessage } from "@/utils/constants/message.consts";
 
 export function initFunc() {
   const navigate = useNavigate();
@@ -22,9 +23,22 @@ export function productFunc() {
   const [product, setProduct] = useState(ProductForm);
   const [products, setProducts] = useState(DefaultProducts);
 
-  function submitForm(event?: FormEvent) {
+  function createProduct(event?: FormEvent) {
     event?.preventDefault();
+
+    setProduct({
+      ...product,
+      method: 'create',
+      nameError: product.name.length < 1 ? ConstMessage.name.error : '',
+      isNameError: product.name.length < 1,
+      skuError: product.sku.length < 1 ? ConstMessage.sku.error : '',
+      isSkuError: product.sku.length < 1,
+      brandError: product.brand.length < 1 ? ConstMessage.brand.error : '',
+      isBrandError: product.brand.length < 1,
+      descriptionError: product.description.length < 1 ? ConstMessage.description.error : '',
+      isDescriptionError: product.description.length < 1,
+    })
   }
 
-  return { product, setProduct, submitForm, products }
+  return { product, setProduct, createProduct, products }
 }

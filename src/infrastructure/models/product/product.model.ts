@@ -45,4 +45,25 @@ export const DefaultProducts: Array<ProductData> = [
         brand: 'Brand 3',
         description: 'Description produk 3',
     },
+    {
+        id: 4,
+        name: 'Produk 4',
+        sku: 'SKU423',
+        brand: 'Brand 3',
+        description: 'Description produk 4',
+    },
+    {
+        id: 5,
+        name: 'Produk 5',
+        sku: 'SKU456',
+        brand: 'Brand 2',
+        description: 'Description produk 5',
+    },
+    {
+        id: 6,
+        name: 'Produk 6',
+        sku: 'SKU789',
+        brand: 'Brand 1',
+        description: 'Description produk 6',
+    },
 ];
