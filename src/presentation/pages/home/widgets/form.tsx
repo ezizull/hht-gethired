@@ -32,6 +32,7 @@ export default function FormWidget({ product, setProduct, createProduct }: Props
               required
               id='name'
               placeholder='product name'
+              value={product.name}
               onChange={function (event) {
                 return setProduct({
                   ...product,
@@ -57,6 +58,7 @@ export default function FormWidget({ product, setProduct, createProduct }: Props
               id='sku'
               placeholder='SKU000'
               style={{ textTransform: 'uppercase' }}
+              value={product.sku}
               onChange={function (event) {
                 return setProduct({
                   ...product,
@@ -83,7 +85,7 @@ export default function FormWidget({ product, setProduct, createProduct }: Props
                   {product.brand ? product.brand : 'choose brand'}
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className='w-[21rem]'>
+              <DropdownMenuContent className='w-[7.5rem] 3xs:w-[calc(100vw-5rem)] 2xs:w-[21rem]'>
                 {
                   ['Brand 1', 'Brand 2', 'Brand 3'].map((brandOption) => (
                     <DropdownMenuItem
@@ -118,6 +120,7 @@ export default function FormWidget({ product, setProduct, createProduct }: Props
             <section className='border-inherit border-[1px] rounded-lg p-4'>
               <EditorProvider
                 autofocus
+                editable={true}
                 onUpdate={function (state) {
                   return setProduct({
                     ...product,
@@ -128,7 +131,7 @@ export default function FormWidget({ product, setProduct, createProduct }: Props
                 }}
                 slotBefore={<TiptapToolbar />}
                 extensions={extensions}
-                content={product.description}
+                content={product.description ? product.description : ''}
               >
 
                 <div className="w-full h-0.5 bg-foreground/5"></div>

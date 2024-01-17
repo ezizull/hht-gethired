@@ -55,8 +55,7 @@ export function productFunc() {
         sku: product.sku,
         description: product.description,
       }]);
-
-      console.log(products)
+      setProduct(ProductForm);
     }
   }
 

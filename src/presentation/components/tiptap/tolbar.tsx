@@ -8,6 +8,7 @@ export default function TiptapToolbar() {
   return (
     <section className='grid grid-cols-1 2xs:grid-cols-3 gap-4 w-full !mb-4'>
       <Button
+        type='button'
         variant={'outline'}
         onClick={() => editor.chain().focus().toggleBold().run()}
         disabled={
@@ -22,6 +23,7 @@ export default function TiptapToolbar() {
         bold
       </Button>
       <Button
+        type='button'
         variant={'outline'}
         onClick={() => editor.chain().focus().toggleItalic().run()}
         disabled={
@@ -36,6 +38,7 @@ export default function TiptapToolbar() {
         italic
       </Button>
       <Button
+        type='button'
         variant={'outline'}
         onClick={() => editor.chain().focus().toggleStrike().run()}
         disabled={

@@ -9,7 +9,7 @@ export default function ProfileWidget() {
   const { navigate, dispatch, userData } = initFunc();
 
   return (
-    <DropdownMenu>
+    <DropdownMenu >
       <DropdownMenuTrigger asChild>
         <Card className='flex justify-between p-6 py-8 font-lato'>
           <section className='flex flex-col'>
@@ -23,7 +23,7 @@ export default function ProfileWidget() {
           </Avatar>
         </Card>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className='flex w-96'>
+      <DropdownMenuContent className='w-[10.5rem] 3xs:w-[calc(100vw-2rem)] 2xs:w-96'>
         <DropdownMenuItem
           key="logout"
           className='w-full'
