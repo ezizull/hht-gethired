@@ -21,7 +21,7 @@ interface Props {
 export default function FormWidget({ product, setProduct, createProduct }: Props) {
   return (
     <ScrollArea className='h-[37rem]'>
-      <Card className='2xs:w-96 p-6 py-8 font-lato'>
+      <Card className='p-6 py-8 font-lato'>
         <h1 className='text-lg font-bold text-center mb-10'>Product</h1>
 
         <form onSubmit={(event) => createProduct(event)}>

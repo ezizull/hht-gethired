@@ -11,7 +11,7 @@ export default function ProfileWidget() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Card className='flex justify-between 2xs:w-96 p-6 py-8 font-lato'>
+        <Card className='flex justify-between p-6 py-8 font-lato'>
           <section className='flex flex-col'>
             <h1 className='font-extrabold text-xl'>{userData?.name}</h1>
             <h2 className='font-light'>{userData?.email}</h2>
