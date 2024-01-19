@@ -6,7 +6,6 @@ import { FormEvent } from "@/infrastructure/models/app/event";
 import { ProfileData } from "@/infrastructure/models/user/profile.model";
 import { ConstMessage } from "@/utils/constants/message.consts";
 import { useDispatch } from "react-redux";
-import { ReactRenderer, useCurrentEditor } from "@tiptap/react";
 import secureLocalStorage from "react-secure-storage";
 
 

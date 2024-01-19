@@ -1,22 +1,22 @@
 import { useCurrentEditor } from '@tiptap/react'
-import { useEffect } from 'react';
 import { Button } from '../shadcn/button'
 import { ProductForm } from '@/infrastructure/models/product/product.model';
+import { initFunc } from './tolbar.function';
 
 interface Props {
   change?: 'product' | null,
   product?: ProductForm,
 }
 
-export default function TiptapToolbar({ change, product }: Props) {
+export default function TiptapToolbar(props: Props) {
   const { editor } = useCurrentEditor()
   if (!editor) return null;
 
-  if (change == 'product') {
-    useEffect(() => {
-      editor.commands.setContent(`${product?.description}`);
-    }, [product]);
-  }
+  initFunc({
+    editor,
+    change: props.change,
+    product: props.product,
+  });
 
   return (
     <section className='grid grid-cols-1 2xs:grid-cols-3 gap-4 w-full !mb-4'>
