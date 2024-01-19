@@ -1,11 +1,10 @@
 import { ScrollArea } from '@/presentation/components/shadcn/scroll-area';
 import { Card } from '@/presentation/components/shadcn/card';
 import { Label } from '@/presentation/components/shadcn/label';
-import { EditorProvider } from '@tiptap/react';
-import { extensions } from '@/presentation/components/tiptap/extension';
 import { Button } from '@/presentation/components/shadcn/button';
 import { Pencil, Trash2 } from 'lucide-react';
 import { ProductData } from "@/infrastructure/models/product/product.model";
+import parse from 'html-react-parser';
 
 interface Props {
   products: ProductData[],
@@ -17,7 +16,7 @@ export default function ProductWidget({ products, deleteProduct, updateProduct }
 
   return (
     products.length > 0 && (
-      <ScrollArea className='w-full sm:w-96 md:w-[49rem] h-[46rem]'>
+      <ScrollArea className='w-full sm:w-96 pr-[1rem] md:w-[50rem] h-[46rem]'>
         <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
           {/* Odd */}
           <section className='grid auto-rows-min gap-4'>
@@ -72,13 +71,7 @@ export default function ProductWidget({ products, deleteProduct, updateProduct }
                       {/* Description */}
                       <section className='flex flex-col space-y-1'>
                         <Label className='font-black' htmlFor='description'>Description</Label>
-                        <EditorProvider
-                          editable={false}
-                          extensions={extensions}
-                          content={data.description}
-                        >
-                          <></>
-                        </EditorProvider>
+                        {parse(data.description)}
                       </section>
                     </Card>
                   )
@@ -140,13 +133,7 @@ export default function ProductWidget({ products, deleteProduct, updateProduct }
                       {/* Description */}
                       <section className='flex flex-col space-y-1'>
                         <Label className='font-black' htmlFor='description'>Description</Label>
-                        <EditorProvider
-                          editable={false}
-                          extensions={extensions}
-                          content={data.description}
-                        >
-                          <></>
-                        </EditorProvider>
+                        {parse(data.description)}
                       </section>
                     </Card>
                   )

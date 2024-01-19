@@ -6,6 +6,7 @@ import { FormEvent } from "@/infrastructure/models/app/event";
 import { ProfileData } from "@/infrastructure/models/user/profile.model";
 import { ConstMessage } from "@/utils/constants/message.consts";
 import { useDispatch } from "react-redux";
+import { ReactRenderer, useCurrentEditor } from "@tiptap/react";
 import secureLocalStorage from "react-secure-storage";
 
 
@@ -23,7 +24,7 @@ export function productFunc() {
   const [products, setProducts] = useState(DefaultProducts);
   const [product, setProduct] = useState(ProductForm);
 
-  function createProduct(event?: FormEvent) {
+  function submitProduct(event?: FormEvent) {
     event?.preventDefault();
 
     const errors = {
@@ -36,7 +37,6 @@ export function productFunc() {
     setProduct({
       ...product,
       ...errors,
-      method: 'create',
       isNameError: errors.nameError.length > 0,
       isSkuError: errors.skuError.length > 0,
       isBrandError: errors.brandError.length > 0,
@@ -49,14 +49,34 @@ export function productFunc() {
       !errors.brandError &&
       !errors.descriptionError
     ) {
-      setProducts([...products, {
-        id: products.length,
-        name: product.name,
-        brand: product.brand as 'Brand 1' | 'Brand 2' | 'Brand 3' | '',
-        sku: product.sku,
-        description: product.description,
-      }]);
-      setProduct(ProductForm);
+      if (product.method === 'create') {
+
+        setProducts([...products, {
+          id: products.length,
+          name: product.name,
+          brand: product.brand as 'Brand 1' | 'Brand 2' | 'Brand 3' | '',
+          sku: product.sku,
+          description: product.description,
+        }]);
+        setProduct(ProductForm);
+
+      } else {
+
+        const updatedIndex = products.findIndex(oldProduct => oldProduct.id === product.id);
+        console.log(updatedIndex)
+        if (updatedIndex !== -1) {
+
+          const updatedProducts = [...products];
+          updatedProducts[updatedIndex] = {
+            ...product,
+            brand: product.brand as 'Brand 1' | 'Brand 2' | 'Brand 3' | '',
+          };
+
+          setProducts(updatedProducts);
+          setProduct(ProductForm);
+
+        }
+      }
     }
   }
 
@@ -80,5 +100,5 @@ export function productFunc() {
     setProducts(newProducts);
   }
 
-  return { product, setProduct, createProduct, deleteProduct, updateProduct, products }
+  return { product, setProduct, submitProduct, deleteProduct, updateProduct, products }
 }

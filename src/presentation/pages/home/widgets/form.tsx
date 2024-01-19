@@ -5,26 +5,27 @@ import { ConstMessage } from '@/utils/constants/message.consts';
 import { Button } from '@/presentation/components/shadcn/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from '@/presentation/components/shadcn/dropdown-menu';
 import { DropdownMenuTrigger } from '@radix-ui/react-dropdown-menu';
-import { EditorProvider } from '@tiptap/react';
+import { Editor, EditorProvider } from '@tiptap/react';
 import { extensions } from '@/presentation/components/tiptap/extension';
-import TiptapToolbar from '@/presentation/components/tiptap/tolbar';
 import { ScrollArea } from '@/presentation/components/shadcn/scroll-area';
 import { ProductForm } from '@/infrastructure/models/product/product.model';
 import { FormEvent } from '@/infrastructure/models/app/event';
+import TiptapToolbar from '@/presentation/components/tiptap/tolbar';
 
 interface Props {
   product: ProductForm,
   setProduct: React.Dispatch<React.SetStateAction<ProductForm>>,
-  createProduct: (event?: FormEvent | undefined) => void
+  submitProduct: (event?: FormEvent | undefined) => void
 }
 
-export default function FormWidget({ product, setProduct, createProduct }: Props) {
+export default function FormWidget({ product, setProduct, submitProduct }: Props) {
+
   return (
     <ScrollArea className='h-[37rem]'>
       <Card className='p-6 py-8 font-lato'>
         <h1 className='text-lg font-bold text-center mb-10'>Product</h1>
 
-        <form onSubmit={(event) => createProduct(event)}>
+        <form onSubmit={(event) => submitProduct(event)}>
           {/* Name */}
           <section className='space-y-1 mb-4'>
             <Label htmlFor='name'>Name</Label>
@@ -129,9 +130,8 @@ export default function FormWidget({ product, setProduct, createProduct }: Props
                     isDescriptionError: state.editor.isEmpty,
                   })
                 }}
-                slotBefore={<TiptapToolbar />}
+                slotBefore={<TiptapToolbar change="product" product={product} />}
                 extensions={extensions}
-                content={product.description ? product.description : ''}
               >
                 <div className="w-full h-0.5 bg-foreground/5"></div>
 
@@ -152,7 +152,8 @@ export default function FormWidget({ product, setProduct, createProduct }: Props
                 type="submit"
                 className='w-full'
                 size="sm"
-                onClick={() => createProduct()}>
+                disabled={product === ProductForm}
+                onClick={() => submitProduct()}>
                 Create
               </Button>
               :
@@ -161,7 +162,8 @@ export default function FormWidget({ product, setProduct, createProduct }: Props
                   type="submit"
                   className='w-full mb-4'
                   size="sm"
-                  onClick={() => createProduct()}>
+                  disabled={product === ProductForm}
+                  onClick={() => { }}>
                   Update
                 </Button>
 
