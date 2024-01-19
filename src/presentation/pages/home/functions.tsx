@@ -51,7 +51,7 @@ export function productFunc() {
       if (product.method === 'create') {
 
         setProducts([...products, {
-          id: products.length,
+          id: products.length + 1,
           name: product.name,
           brand: product.brand as 'Brand 1' | 'Brand 2' | 'Brand 3' | '',
           sku: product.sku,
